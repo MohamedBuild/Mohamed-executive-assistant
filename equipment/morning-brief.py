@@ -14,10 +14,14 @@ Or run from anywhere:
   alias brief="python 'C:/Users/Dell/Desktop/Mohamed excecutive assistant/equipment/morning-brief.py'"
 """
 
+import io
 import re
 import sys
-from datetime import date, datetime
+from datetime import date
 from pathlib import Path
+
+# Ensure UTF-8 output on Windows terminals
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 TODAY = date.today()
 BASE_DIR = Path(__file__).parent.parent
@@ -97,7 +101,7 @@ def parse_focus(path: Path):
             if section == "deadlines" and line.strip():
                 m = re.match(r"^- (.+)", line)
                 if m:
-                    deadlines.append(m.group(1).strip())
+                    deadlines.append(clean(m.group(1)))
 
     return priorities[:3], deadlines
 
@@ -115,6 +119,11 @@ def parse_schedule(path: Path):
                 events.append(line.lstrip("- ").strip())
 
     return events or None
+
+
+def clean(text: str) -> str:
+    """Strip basic markdown formatting from parsed content."""
+    return re.sub(r"\*{1,2}([^*]+)\*{1,2}", r"\1", text).strip()
 
 
 def divider(char="-", width=60):
