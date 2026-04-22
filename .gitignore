@@ -8,3 +8,4 @@ token.json
 *.pyc
 __pycache__/
 live/invoices/
+live/quotes/
