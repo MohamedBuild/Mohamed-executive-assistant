@@ -9,3 +9,4 @@ token.json
 __pycache__/
 live/invoices/
 live/quotes/
+live/crm.csv
