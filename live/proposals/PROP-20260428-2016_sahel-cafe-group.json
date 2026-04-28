@@ -1,0 +1,38 @@
+{
+  "proposal_number": "PROP-20260428-2016",
+  "client_name": "Sahel Cafe Group",
+  "contact_name": "Omar Khouri",
+  "project_name": "Operations Workflow Automation",
+  "issue_date": "28 April 2026",
+  "start_date": "12 May 2026",
+  "scope": "Design and deploy three end-to-end agentic workflows covering order management, inventory tracking, and weekly operations reporting. Each workflow runs automatically on a defined trigger, requires no manual input once live, and integrates with the client existing tools. Deliverables include full documentation and a handover session.",
+  "deliverables": [
+    {
+      "description": "Order management workflow - automated order intake, confirmation, and status tracking",
+      "optional": false
+    },
+    {
+      "description": "Inventory tracking workflow - real-time stock alerts and reorder triggers",
+      "optional": false
+    },
+    {
+      "description": "Weekly operations report - auto-generated summary delivered every Monday",
+      "optional": false
+    },
+    {
+      "description": "Team training session (2 hours) - how to monitor, adjust, and extend the workflows",
+      "optional": true
+    }
+  ],
+  "value": 6500.0,
+  "payment_structure": "50-50",
+  "timeline": "6 weeks from project start",
+  "assumptions": "Client provides access to existing tools and systems by project start date. All required credentials and integrations are available within the first week.",
+  "revision_rounds": 2,
+  "apply_vat": false,
+  "vat_rate": 0.0,
+  "vat_amount": 0.0,
+  "total": 6500.0,
+  "currency": "USD",
+  "legal_text": ""
+}
