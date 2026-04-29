@@ -2,37 +2,37 @@
   "proposal_number": "PROP-20260428-2016",
   "client_name": "Sahel Cafe Group",
   "contact_name": "Omar Khouri",
-  "project_name": "Operations Workflow Automation",
-  "issue_date": "28 April 2026",
+  "project_name": "Operations Workflow Automation \u2014 Growth Package",
+  "issue_date": "29 April 2026",
   "start_date": "12 May 2026",
-  "scope": "Design and deploy three end-to-end agentic workflows covering order management, inventory tracking, and weekly operations reporting. Each workflow runs automatically on a defined trigger, requires no manual input once live, and integrates with the client existing tools. Deliverables include full documentation and a handover session.",
+  "scope": "Design and deploy three end-to-end agentic workflows for Sahel Cafe Group's 8-location F&B operation: order management, inventory tracking, and weekly operations reporting. Each workflow runs automatically on a defined trigger, requires zero manual input once live, and integrates with the client's existing tools. Includes full documentation, 60 days post-launch support, and a handover session.",
   "deliverables": [
     {
-      "description": "Order management workflow - automated order intake, confirmation, and status tracking",
+      "description": "Order management workflow \u2014 automated order intake, confirmation, and status tracking across all 8 locations",
       "optional": false
     },
     {
-      "description": "Inventory tracking workflow - real-time stock alerts and reorder triggers",
+      "description": "Inventory tracking workflow \u2014 real-time stock alerts and automatic reorder triggers",
       "optional": false
     },
     {
-      "description": "Weekly operations report - auto-generated summary delivered every Monday",
+      "description": "Weekly operations report \u2014 auto-generated Monday summary delivered to management",
       "optional": false
     },
     {
-      "description": "Team training session (2 hours) - how to monitor, adjust, and extend the workflows",
+      "description": "Team training session (2 hours) \u2014 how to monitor, adjust, and extend the workflows",
       "optional": true
     }
   ],
   "value": 6500.0,
   "payment_structure": "50-50",
   "timeline": "6 weeks from project start",
-  "assumptions": "Client provides access to existing tools and systems by project start date. All required credentials and integrations are available within the first week.",
+  "assumptions": "Client provides access to existing tools, systems, and integrations by project start date. All required credentials are available within the first week of the engagement.",
   "revision_rounds": 2,
   "apply_vat": false,
   "vat_rate": 0.0,
   "vat_amount": 0.0,
   "total": 6500.0,
   "currency": "USD",
-  "legal_text": ""
+  "legal_text": "All quotes valid for 30 days from issue date. Scope changes require written approval and may adjust timeline and price. Deliverables remain property of Agencina Agency until full payment is received in full. Payment structure: 50% due upon project start, 50% due on delivery. Late fee of 2% per month applies after 14 days overdue. Accepted payment methods: bank transfer, Stripe (USD/AED), Wise. Agencina Agency FZ-LLC \u2014 Trade Licence DET-1234567 \u2014 Dubai Internet City Free Zone, UAE \u2014 VAT No. 100123456700003."
 }
