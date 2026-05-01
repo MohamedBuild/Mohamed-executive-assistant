@@ -1,3 +1,3 @@
 {
-  "_note": "Zapier MCP server configured in settings.local.json (gitignored). Token from Zapier dashboard."
+  "_note": "Zapier MCP server template at .claude/templates/.mcp.json (placeholder token). Live token in settings.local.json (gitignored)."
 }
