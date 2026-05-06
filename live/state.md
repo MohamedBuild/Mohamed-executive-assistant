@@ -3,8 +3,8 @@
 *Updated at the end of each session. Read this FIRST on startup.*
 
 ## Last Session
-- **Date:** 2026-05-01
-- **Summary:** Blueprint analysis + skill conversion sprint. Analysed all 6 blueprints for skill-readiness. Built 3 Tier 1 skills: `generate-invoice`, `generate-quote`, `morning-brief`. Removed `.mcp.json` from git (token security), added to `.gitignore`. Zapier MCP confirmed live in `.claude/settings.local.json`. All committed to master (bd82b6e).
+- **Date:** 2026-05-04
+- **Summary:** Skill sprint. Built 2 new skills: `/task-manager` (add, complete, list, archive tasks in live/tasks.md) and `/weekly-plan` (reads Gmail + Calendar + Sheets CRM + local files, scores every item by Urgency × Impact, writes atomic tasks with "Done when" criteria, saves markdown + PDF). Investigated PDF integrity — all existing PDFs confirmed valid. Searched skills.sh for a planning skill — nothing relevant found; built custom instead, inspired by obra/superpowers/writing-plans methodology.
 
 ## Open Tasks
 - Define quarterly goals in detail (intel/wins.md is seeded — refine together)
@@ -27,10 +27,12 @@
 ## Skill Registry (live)
 | Skill | Trigger | Status |
 |-------|---------|--------|
+| `/weekly-plan` | weekly plan, plan my week, prioritise my week | Live — rebuilt with prioritisation framework |
 | `/recap-pipeline` | pipeline recap, deal overview | Live |
 | `/generate-invoice` | invoice for [client], bill [client] | Live |
 | `/generate-quote` | quote for [client], convert quote | Live |
 | `/morning-brief` | morning brief, what's on today | Live |
+| `/task-manager` | add task, mark done, show tasks, clear completed | Live |
 | `/generate-proposal` | generate proposal for [client] | Tier 2 — not yet built |
 | `/client-onboarding` | onboard [client] | Tier 2 — not yet built |
 | `/lead-update-followup` | follow up with [client] | Tier 3 — needs Zapier confirm |
