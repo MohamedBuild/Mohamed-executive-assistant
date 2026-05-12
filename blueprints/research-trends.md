@@ -18,7 +18,7 @@ Optional argument overrides the topic (default: content creation and marketing).
 4. `briefings/` directory will be created automatically by the script
 
 ## Equipment
-`equipment/generate-trends-pdf.py` — generates branded PDF and sends email with attachment
+`equipment/generate-trends-pdf.py` — generates branded PDF only — email delivery handled by the agent via Zapier
 
 ## Sequence
 
@@ -92,7 +92,7 @@ Optional argument overrides the topic (default: content creation and marketing).
 
 8. Run:
    ```bash
-   python equipment/generate-trends-pdf.py --data-file briefings/.tmp-trends-data.json --recipient mohamed.build30@gmail.com
+   python equipment/generate-trends-pdf.py --data-file briefings/.tmp-trends-data.json
    ```
 
 9. Delete `briefings/.tmp-trends-data.json` after the script completes
@@ -125,4 +125,4 @@ Optional argument overrides the topic (default: content creation and marketing).
 - AGENCINA context: clients are SME owners — often non-technical, time-poor, results-focused. Trends that help them get more from less score highest.
 - "Why it matters" is the most important section of each finding — that is what Mohamed uses when talking to clients.
 - PDF is saved permanently in `briefings/` regardless of email outcome. Never delete it.
-- For SMTP: uses `BUSINESS_EMAIL` as sender via Gmail's SMTP SSL on port 465. Requires an App Password (not account password). See `.env.example` for setup notes.
+- Email delivery uses Zapier's Gmail send action — no SMTP config required.

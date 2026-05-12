@@ -22,6 +22,24 @@ DIV     = (210, 210, 228)
 WHITE   = (255, 255, 255)
 
 
+def sanitise(text: str) -> str:
+    """Replace characters unsupported by fpdf latin-1 core fonts."""
+    replacements = {
+        "—": "--",   # em dash
+        "–": "-",    # en dash
+        "‘": "'",    # left single quote
+        "’": "'",    # right single quote
+        "“": '"',    # left double quote
+        "”": '"',    # right double quote
+        "…": "...",  # ellipsis
+        " ": " ",    # non-breaking space
+    }
+    for char, replacement in replacements.items():
+        text = text.replace(char, replacement)
+    # Final fallback: drop anything still outside latin-1
+    return text.encode("latin-1", errors="replace").decode("latin-1")
+
+
 # ── PDF class ─────────────────────────────────────────────────────────────────
 
 class TrendsPDF(FPDF):
@@ -31,12 +49,12 @@ class TrendsPDF(FPDF):
         self.set_text_color(*WHITE)
         self.set_font("Helvetica", "B", 9)
         self.set_xy(12, 4)
-        self.cell(0, 8, "AGENCINA  —  Research Intelligence", ln=False)
+        self.cell(0, 8, "AGENCINA  --  Research Intelligence", new_x="RIGHT", new_y="TOP")
         self.set_font("Helvetica", "", 8)
         self.set_text_color(160, 160, 190)
         self.set_xy(0, 4)
         date_str = datetime.now().strftime("%d %B %Y")
-        self.cell(198, 8, date_str, align="R", ln=True)
+        self.cell(198, 8, date_str, align="R", new_x="LMARGIN", new_y="NEXT")
 
     def footer(self):
         self.set_y(-13)
@@ -47,7 +65,7 @@ class TrendsPDF(FPDF):
         self.set_y(-10)
         self.cell(
             0, 6,
-            f"Confidential  —  AGENCINA Internal Research   |   Page {self.page_no()}",
+            f"Confidential  --  AGENCINA Internal Research   |   Page {self.page_no()}",
             align="C",
         )
 
@@ -60,9 +78,9 @@ def build_pdf(data: dict, output_path: Path) -> None:
     pdf.add_page()
     pdf.set_margins(14, 20, 14)
 
-    title    = data["title"]
-    subtitle = data.get("subtitle", "")
-    intro    = data.get("intro", "")
+    title    = sanitise(data["title"])
+    subtitle = sanitise(data.get("subtitle", ""))
+    intro    = sanitise(data.get("intro", ""))
     findings = data["findings"]
 
     # ── Hero block ────────────────────────────────────────────────────────────
@@ -77,27 +95,27 @@ def build_pdf(data: dict, output_path: Path) -> None:
     pdf.set_xy(14, hero_top + 8)
     pdf.set_text_color(*ACCENT)
     pdf.set_font("Helvetica", "B", 7)
-    pdf.cell(0, 5, "CONTENT MARKETING  —  TREND REPORT", ln=True)
+    pdf.cell(0, 5, "CONTENT MARKETING  --  TREND REPORT", new_x="LMARGIN", new_y="NEXT")
 
     pdf.set_x(14)
     pdf.set_text_color(*DARK)
     pdf.set_font("Helvetica", "B", 20)
-    pdf.multi_cell(182, 9, title, ln=True)
+    pdf.multi_cell(182, 9, title)
 
     if subtitle:
         pdf.set_x(14)
         pdf.set_text_color(*MUTED)
         pdf.set_font("Helvetica", "", 10)
-        pdf.multi_cell(182, 5, subtitle, ln=True)
+        pdf.multi_cell(182, 5, subtitle)
 
-    pdf.set_y(hero_top + hero_h + 8)
+    pdf.ln(6)
 
     # ── Intro paragraph ───────────────────────────────────────────────────────
     if intro:
         pdf.set_x(14)
         pdf.set_text_color(*TEXT)
         pdf.set_font("Helvetica", "", 10)
-        pdf.multi_cell(182, 5.5, intro, ln=True)
+        pdf.multi_cell(182, 5.5, intro)
         pdf.ln(5)
 
     # Section divider + label
@@ -109,15 +127,15 @@ def build_pdf(data: dict, output_path: Path) -> None:
     pdf.set_x(14)
     pdf.set_text_color(*MUTED)
     pdf.set_font("Helvetica", "B", 7)
-    pdf.cell(0, 4, "TOP 3 FINDINGS", ln=True)
+    pdf.cell(0, 4, "TOP 3 FINDINGS", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(5)
 
     # ── Findings ──────────────────────────────────────────────────────────────
     for i, f in enumerate(findings):
         rank    = f["rank"]
-        heading = f["heading"]
-        body    = f["body"]
-        why     = f.get("why_it_matters", "")
+        heading = sanitise(f["heading"])
+        body    = sanitise(f["body"])
+        why     = sanitise(f.get("why_it_matters", ""))
 
         start_y = pdf.get_y()
 
@@ -130,12 +148,12 @@ def build_pdf(data: dict, output_path: Path) -> None:
         pdf.set_xy(27, start_y + 1)
         pdf.set_text_color(*DARK)
         pdf.set_font("Helvetica", "B", 12)
-        pdf.multi_cell(169, 6.5, heading, ln=True)
+        pdf.multi_cell(169, 6.5, heading)
 
         pdf.set_x(27)
         pdf.set_text_color(*TEXT)
         pdf.set_font("Helvetica", "", 9.5)
-        pdf.multi_cell(169, 5.5, body, ln=True)
+        pdf.multi_cell(169, 5.5, body)
         pdf.ln(3)
 
         if why:
@@ -143,12 +161,12 @@ def build_pdf(data: dict, output_path: Path) -> None:
             pdf.set_text_color(*ACCENT)
             pdf.set_font("Helvetica", "B", 7)
             pdf.set_x(27)
-            pdf.cell(169, 5, "  WHY IT MATTERS", fill=True, ln=True)
+            pdf.cell(169, 5, "  WHY IT MATTERS", fill=True, new_x="LMARGIN", new_y="NEXT")
             pdf.set_fill_color(*WHY_BG)
             pdf.set_text_color(*TEXT)
             pdf.set_font("Helvetica", "", 9)
             pdf.set_x(27)
-            pdf.multi_cell(169, 5, why, fill=True, ln=True)
+            pdf.multi_cell(169, 5, why, fill=True)
             pdf.ln(2)
 
         pdf.ln(4)
@@ -181,7 +199,7 @@ def main():
     date_tag    = datetime.now().strftime("%Y%m%d-%H%M")
     output_path = Path(f"briefings/trends-{date_tag}.pdf")
 
-    print(f"Generating PDF ...")
+    print("Generating PDF ...")
     build_pdf(data, output_path)
     print(f"PDF_PATH:{output_path}")
 
