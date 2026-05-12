@@ -4,7 +4,7 @@
 
 ## Last Session
 - **Date:** 2026-05-12
-- **Summary:** Installed `eisenhower` skill globally (neurofoo/agent-skills) via npx skills. Moved to ~/.claude/skills/ alongside copywriting and frontend-design. Cleaned local .agents/skills/ and .claude/skills/ — all 3 global skills confirmed in ~/.claude/skills/.
+- **Summary:** Built `research-trends` subagent — researches latest content marketing trends, generates a branded PDF, and sends it to Mohamed via Zapier Gmail. Files: `.claude/agents/research-trends.md`, `equipment/generate-trends-pdf.py`, `blueprints/research-trends.md`, `equipment/requirements.txt`. Email delivery uses Zapier (already configured) — no extra credentials needed.
 
 ## Open Tasks
 - Define quarterly goals in detail (intel/wins.md is seeded — refine together)
@@ -29,3 +29,9 @@
 | `/frontend-design` | build UI, landing page, component, design | Live | Global |
 | `/copywriting` | write copy, rewrite page, marketing copy | Live | Global |
 | `/eisenhower` | prioritise tasks, eisenhower matrix | Live | Global |
+
+## Subagent Registry (live)
+
+| Agent | Trigger | Status | Location |
+|-------|---------|--------|----------|
+| `research-trends` | research trends, content trends, trend report, trends PDF | Live | `.claude/agents/research-trends.md` |
