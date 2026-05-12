@@ -1,3 +1,19 @@
 {
-  "_note": "Zapier MCP server template at .claude/templates/.mcp.json (placeholder token). Live token in settings.local.json (gitignored)."
+  "_note": "Zapier MCP server template at .claude/templates/.mcp.json (placeholder token). Live token in settings.local.json (gitignored).",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "agent",
+            "if": "Bash(git commit *)",
+            "prompt": "A git commit was just made. Run `git diff HEAD~1 HEAD` to see what changed, then review the code for: 1) Security issues — hardcoded credentials, injection risks, dangerous function calls. 2) Correctness — bugs, unhandled errors, missing validation. 3) Code quality — dead code, functions doing too much, confusing naming. Output: what looks good, issues with severity (CRITICAL/WARNING/MINOR), and a one-line verdict. Under 200 words. Be direct.",
+            "timeout": 60,
+            "statusMessage": "Reviewing committed changes..."
+          }
+        ]
+      }
+    ]
+  }
 }

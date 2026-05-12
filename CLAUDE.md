@@ -58,9 +58,7 @@ Owner authority?    > Describe options. Never choose unilaterally.
 All scripts run from the project root:
 
 ```bash
-python "equipment/generate-invoice.py" [args]
-python "equipment/generate-quote.py" [args]
-python "equipment/morning-brief.py"
+python "equipment/<script-name>.py" [args]
 ```
 
 **First-time setup:**
@@ -89,7 +87,7 @@ allowed-tools: Bash Read Write Edit
 
 Steps follow the same pattern: pre-flight checks → collect inputs → confirm → execute → report → failure table.
 
-When building a new skill: copy the structure from an existing one (e.g. `generate-invoice`), write the SKILL.md, register it in `live/state.md` skill registry.
+When building a new skill: write SKILL.md, register it in `live/state.md` skill registry.
 
 ---
 
@@ -114,17 +112,11 @@ North Star: become the agentic workflows consultancy leader in MENA.
 
 ## Skill Registry
 
-| Skill | Status |
-|-------|--------|
-| `/generate-invoice` | Live |
-| `/generate-quote` | Live |
-| `/morning-brief` | Live |
-| `/recap-pipeline` | Live |
-| `/weekly-plan` | Live |
-| `/task-manager` | Live |
-| `/generate-proposal` | Tier 2 — not yet built |
-| `/client-onboarding` | Tier 2 — not yet built |
-| `/lead-update-followup` | Tier 3 — blocked on Zapier action confirm |
+| Skill | Status | Scope |
+|-------|--------|-------|
+| `/frontend-design` | Live | Global (~/.claude/skills/) |
+| `/copywriting` | Live | Global (~/.claude/skills/) |
+| `/eisenhower` | Live | Global (~/.claude/skills/) |
 
 ---
 
