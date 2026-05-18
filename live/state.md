@@ -3,8 +3,8 @@
 *Updated at the end of each session. Read this FIRST on startup.*
 
 ## Last Session
-- **Date:** 2026-05-12
-- **Summary:** Built `research-trends` subagent — researches latest content marketing trends, generates a branded PDF, and sends it to Mohamed via Zapier Gmail. Files: `.claude/agents/research-trends.md`, `equipment/generate-trends-pdf.py`, `blueprints/research-trends.md`, `equipment/requirements.txt`. Email delivery uses Zapier (already configured) — no extra credentials needed.
+- **Date:** 2026-05-18
+- **Summary:** Built batch invoice PDF generation from Google Sheet data. New equipment: `equipment/generate-invoice.py` (reads `templates/invoice_reference/invoice_template.docx`, fills {{TOKEN}} placeholders, converts to PDF via docx2pdf). Paid invoices get a diagonal PAID watermark (`#ededed`). Generated 15 PDFs from "AAA Operations — Internal Dashboard" Invoices tab — saved to `live/invoices/` (gitignored). Updated `blueprints/invoice-creation.md` to match real script. Dependencies added: `python-docx`, `docx2pdf`.
 
 ## Open Tasks
 - Define quarterly goals in detail (intel/wins.md is seeded — refine together)
@@ -13,10 +13,11 @@
 - **FOLLOW UP** Zayd Property — $6,500 quote sent, follow-up overdue
 - Review and send Sahel Cafe Group proposal PDF (`live/proposals/PROP-20260428-2016_sahel-cafe-group.pdf`)
 - Fill in remaining .env fields: BUSINESS_ADDRESS, BUSINESS_PHONE, bank details
+- **OVERDUE** Website / landing page — deadline was 2026-05-15
 
 ## Current Priorities
 1. Finding clients
-2. Website / landing page live before 2026-05-15
+2. Website / landing page — overdue, needs immediate action
 3. Pricing structure finalised
 
 ## Active Projects
